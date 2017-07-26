@@ -1,0 +1,19 @@
+{
+  "name": "inazuma",
+  "version": "1.0.0",
+  "description": "electron based client",
+  "main": "main.js",
+  "scripts": {
+    "test": "test-poi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kor-coeo/Inazuma.git"
+  },
+  "author": "coeo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kor-coeo/Inazuma/issues"
+  },
+  "homepage": "https://github.com/kor-coeo/Inazuma#readme"
+}
