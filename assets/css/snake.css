@@ -26,9 +26,17 @@ span{
     border:1px solid black;
     box-sizing:border-box;
 }
-span.snake{
+span.snakeMe{
     position:absolute;
-    background-color:red;
+    background-color:#86C166;
+}
+span.snakeFr{
+    position:absolute;
+    background-color:#66BAB7;
+}
+span.snakeFo{
+    position:absolute;
+    background-color:#D05A6E;
 }
 span.food{
     position:absolute;

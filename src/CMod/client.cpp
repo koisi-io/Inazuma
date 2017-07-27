@@ -1,6 +1,7 @@
 #include <node.h>
 #include <v8.h>
 #include <iostream>
+#include <string>
 #include "deliv.h"
 using std::stringstream;
 using std::cin;
@@ -24,7 +25,7 @@ void clientClose(const FunctionCallbackInfo<Value> &args){
   args.GetReturnValue().Set(message);
 }
 /***************************************************************************/
-/***************************************************************************/
+/*******************************clientWking*********************************/
 void clientWking(const FunctionCallbackInfo<Value> &args){
   v8::Isolate *isolate = args.GetIsolate();
   short buff;int SKID = client.getSKID();
@@ -45,7 +46,6 @@ void clientWking(const FunctionCallbackInfo<Value> &args){
   int a;int b;
   ss << recvBf;
   ss >> a;
-cout<<"CMOD cwking bf if "<<endl;
   /***     poi poi poi poi poi poi poi poi poi poi     ***/
 
   if(a == -101){
@@ -57,7 +57,6 @@ cout<<"CMOD cwking bf if "<<endl;
       for(int i=0;true;++i){
         ss >> a;if(a == -102)break;
         ss >> b;
-        cout<<"CMOD 111 a,b "<<a<<" "<<b<<endl;
         auto JS_ArrUit = v8::Array::New(isolate);
         JS_ArrUit->Set(0, v8::Integer::New(isolate,a));
         JS_ArrUit->Set(1, v8::Integer::New(isolate,b));
@@ -72,13 +71,18 @@ cout<<"CMOD cwking bf if "<<endl;
               /*********************/
       for(int iSNK=1;true;++iSNK){
         auto JS_ArrSnk = v8::Array::New(isolate);
-        ss >> a; if(a == -103)break;
+        ss >> a;
+        if(a == -103){
+          ss >> a;    // get -101
+          ss >> a;    // get plyID
+          JS_ArrSet->Set(iSNK,v8::Integer::New(isolate,a));
+          break;
+        };
 
         if(a == -104){
           for(int i=0;true;++i){
             ss >> a;if(a == -104)break;
             ss >> b;
-            cout<<"CMOD222 a,b "<<a<<" "<<b<<endl;
             auto JS_ArrUit = v8::Array::New(isolate);
             JS_ArrUit->Set(0, v8::Integer::New(isolate,a));
             JS_ArrUit->Set(1, v8::Integer::New(isolate,b));
@@ -96,7 +100,7 @@ cout<<"CMOD cwking bf if "<<endl;
   /***     poi poi poi poi poi poi poi poi poi poi     ***/
   args.GetReturnValue().Set(JS_ArrSet);
 }
-/***************************************************************************/
+/******************************clientWking**********************************/
 /***************************************************************************/
 void Initialize(v8::Local<v8::Object> exports) {
   NODE_SET_METHOD(exports, "clientStart", clientStart);

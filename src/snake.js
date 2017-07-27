@@ -7,14 +7,17 @@ var DIR={
     DIR_TOP:3,
     DIR_BOTTOM:4
 };
-var dir=DIR.DIR_BOTTOM;
+var dir=DIR.DIR_LEFT;
 var food=[]; //始终记录当前的食物
 var snakeOld=[];
-var poi=[[[]]];
+var poi;
+var playerID;
 /****************************************/
 /****************************************/
 window.onload=function(){
+  console.log("init beg");
     GameSetInit();
+    console.log("init end");
     setInterval(drawGameSet,200);
     document.onkeyup=function(e){
         switch(e.keyCode){
@@ -30,11 +33,6 @@ window.onunload=function(){
 }
 /****************************************/
 /****************************************/
-function GameSetInit(){
-  drawMap();
-  createFood();
-  delivStart();
-}
 function drawMap(){
   var con=document.getElementById("container");
   var num=row*col;
@@ -72,14 +70,20 @@ function drawSnake(){
   }
   snakeOld=[];
 
-  for(var i=1;i<poi.length;++i){
+  playerID=poi[poi.length-1];
+  console.log("playerID");console.log(playerID);
+  for(var i=1;i<poi.length-1;++i){
     for(var k=0;k<poi[i].length;++k){
       oneBody=document.createElement("span");
       oneBody.style.width=box.width+"px";
       oneBody.style.height=box.height+"px";
       oneBody.style.left=poi[i][k][0]*box.width+"px";
       oneBody.style.top=poi[i][k][1]*box.height+"px";
-      oneBody.className="snake";
+
+      if((i-1) == playerID)oneBody.className="snakeMe";
+      else if(((i-1)%2)==(playerID%2))oneBody.className="snakeFr";
+      else{oneBody.className="snakeFo";}
+
       con.appendChild(oneBody);
       snakeOld.push(oneBody);
     }
@@ -96,6 +100,11 @@ function delivStart(){
 }
 function delivClose(){
   console.log(client.clientClose());
+}
+function GameSetInit(){
+  drawMap();
+  createFood();
+  delivStart();
 }
 function drawGameSet(){
   getGameSet();
