@@ -34,10 +34,10 @@ CFLAGS_CC_Debug := \
 	-std=gnu++0x
 
 INCS_Debug := \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/include/node \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/src \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/deps/uv/include \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/deps/v8/include
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/include/node \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/src \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/deps/uv/include \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=client' \
@@ -69,10 +69,10 @@ CFLAGS_CC_Release := \
 	-std=gnu++0x
 
 INCS_Release := \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/include/node \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/src \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/deps/uv/include \
-	-I/home/coeo/.node-gyp/iojs-1.7.5/deps/v8/include
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/include/node \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/src \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/deps/uv/include \
+	-I/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/client.o \

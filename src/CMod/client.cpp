@@ -41,21 +41,59 @@ void clientWking(const FunctionCallbackInfo<Value> &args){
   recv(SKID,recvBf,MaxBuffSize,0);
   auto JS_ArrSet = v8::Array::New(isolate);
   stringstream ss;
-  ss.clear();
+  ss.str("");ss.clear();
   int a;int b;
   ss << recvBf;
   ss >> a;
+cout<<"CMOD cwking bf if "<<endl;
+  /***     poi poi poi poi poi poi poi poi poi poi     ***/
+
   if(a == -101){
-    for(int i=0;true;++i){
-      ss >> a;if(a == -101)break;
-      ss >> b;
-      cout<<"a,b"<<a<<" "<<b<<endl;
-      auto JS_ArrUit = v8::Array::New(isolate);
-      JS_ArrUit->Set(0, v8::Integer::New(isolate,a));
-      JS_ArrUit->Set(1, v8::Integer::New(isolate,b));
-      JS_ArrSet->Set(i, JS_ArrUit);
+    /***********************************/
+    /***********************************/
+    ss >> a;
+    if(a == -102){
+      auto JS_ArrFoo = v8::Array::New(isolate);
+      for(int i=0;true;++i){
+        ss >> a;if(a == -102)break;
+        ss >> b;
+        cout<<"CMOD 111 a,b "<<a<<" "<<b<<endl;
+        auto JS_ArrUit = v8::Array::New(isolate);
+        JS_ArrUit->Set(0, v8::Integer::New(isolate,a));
+        JS_ArrUit->Set(1, v8::Integer::New(isolate,b));
+        JS_ArrFoo->Set(i, JS_ArrUit);
+      }
+      JS_ArrSet->Set(0,JS_ArrFoo);
     }
+    /***********************************/
+    /***********************************/
+    ss >> a;
+    if(a == -103){
+              /*********************/
+      for(int iSNK=1;true;++iSNK){
+        auto JS_ArrSnk = v8::Array::New(isolate);
+        ss >> a; if(a == -103)break;
+
+        if(a == -104){
+          for(int i=0;true;++i){
+            ss >> a;if(a == -104)break;
+            ss >> b;
+            cout<<"CMOD222 a,b "<<a<<" "<<b<<endl;
+            auto JS_ArrUit = v8::Array::New(isolate);
+            JS_ArrUit->Set(0, v8::Integer::New(isolate,a));
+            JS_ArrUit->Set(1, v8::Integer::New(isolate,b));
+            JS_ArrSnk->Set(i, JS_ArrUit);
+          }
+          JS_ArrSet->Set(iSNK,JS_ArrSnk);
+        }
+
+      }
+              /*********************/
+    }
+    /***********************************/
+    /***********************************/
   }
+  /***     poi poi poi poi poi poi poi poi poi poi     ***/
   args.GetReturnValue().Set(JS_ArrSet);
 }
 /***************************************************************************/

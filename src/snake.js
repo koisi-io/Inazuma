@@ -8,9 +8,9 @@ var DIR={
     DIR_BOTTOM:4
 };
 var dir=DIR.DIR_BOTTOM;
-var food=null; //始终记录当前的食物
-var poi=[[7,2],[0,1],[1,1],[2,1],[3,1]];
+var food=[]; //始终记录当前的食物
 var snakeOld=[];
+var poi=[[[]]];
 /****************************************/
 /****************************************/
 window.onload=function(){
@@ -47,18 +47,23 @@ function drawMap(){
   }
 }
 function createFood(){
-  var con=document.getElementById("container");
-  food=document.createElement("span");
-  con.appendChild(food);
+  for(var i=0;i<4;++i){
+    var con=document.getElementById("container");
+    food[i]=document.createElement("span");
+    con.appendChild(food[i]);
+    food[i].className="food";
+    food[i].style.width=box.width+"px";
+    food[i].style.height=box.height+"px";
+  }
 }
-function drawFood(coor){
-  food.className="food";
-  food.style.width=box.width+"px";
-  food.style.height=box.height+"px";
-  food.style.left=coor[0]*box.width+"px";
-  food.style.top=coor[1]*box.height+"px";
+function drawFood(){
+  for(var i=0;i<4;++i){
+    food[i].style.left=poi[0][i][0]*box.width+"px";
+    food[i].style.top=poi[0][i][1]*box.height+"px";
+  }
 }
 function drawSnake(){
+
   var oneBody=null;
   var con=document.getElementById("container");
 
@@ -68,14 +73,16 @@ function drawSnake(){
   snakeOld=[];
 
   for(var i=1;i<poi.length;++i){
-    oneBody=document.createElement("span");
-    oneBody.style.width=box.width+"px";
-    oneBody.style.height=box.height+"px";
-    oneBody.style.left=poi[i][0]*box.width+"px";
-    oneBody.style.top=poi[i][1]*box.height+"px";
-    oneBody.className="snake";
-    con.appendChild(oneBody);
-    snakeOld.push(oneBody);
+    for(var k=0;k<poi[i].length;++k){
+      oneBody=document.createElement("span");
+      oneBody.style.width=box.width+"px";
+      oneBody.style.height=box.height+"px";
+      oneBody.style.left=poi[i][k][0]*box.width+"px";
+      oneBody.style.top=poi[i][k][1]*box.height+"px";
+      oneBody.className="snake";
+      con.appendChild(oneBody);
+      snakeOld.push(oneBody);
+    }
   }
 }
 /****************************************/
@@ -92,6 +99,6 @@ function delivClose(){
 }
 function drawGameSet(){
   getGameSet();
-  drawFood(poi[0]);
+  drawFood();
   drawSnake();
 }

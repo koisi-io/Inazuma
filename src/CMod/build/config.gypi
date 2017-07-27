@@ -62,11 +62,8 @@
     "v8_use_snapshot": "false",
     "want_separate_host_toolset": 0,
     "want_separate_host_toolset_mkpeephole": 0,
-    "nodedir": "/home/coeo/.node-gyp/iojs-1.7.5",
+    "nodedir": "/home/coeo/.electron-gyp/.node-gyp/iojs-1.7.5",
     "standalone_static_library": 1,
-    "target": "1.7.5",
-    "disturl": "https://atom.io/download/electron",
-    "runtime": "electron",
-    "build_from_source": "true"
+    "target": "1.7.5"
   }
 }
